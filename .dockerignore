@@ -1,0 +1,45 @@
+# Ignore the following directories and files:
+# Build and dependency directories
+target/
+node_modules/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# IDE/editor configuration files
+.vscode/
+.idea/
+*.iml
+
+# Maven wrapper files (if not needed in the Docker image)
+mvnw
+mvnw.cmd
+*.jar
+
+# Java build artifacts (if Maven build will create them)
+*.class
+*.war
+*.ear
+
+# Docker build cache
+.docker/
+
+# Logs
+*.log
+
+# Test output and coverage
+*.out
+*.err
+*.gcov
+*.lcov
+*.coveralls
+
+# Temp files
+*.tmp
+*.swp

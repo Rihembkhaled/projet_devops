@@ -1,0 +1,37 @@
+services:
+    backend:
+        container_name: spring-backend
+        image: devops
+        ports:
+            - 8088:8088
+        depends_on:
+            - postgres
+        networks:
+            - spring-demo
+        restart: unless-stopped
+        environment:
+            DATASOURCE_URL: postgres-spring
+            DATASOURCE_USERNAME: root
+            DATASOURCE_PASSWORD: root_password
+
+    postgres:
+        container_name: postgres-spring
+        image: postgres:15
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root_password
+            POSTGRES_DB: spring
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432" # Maps localhost:5432 to container:5432
+        networks:
+            - spring-demo
+        restart: unless-stopped
+
+networks:
+    spring-demo:
+        driver: bridge
+volumes:
+    postgres_data:
+        driver: local
